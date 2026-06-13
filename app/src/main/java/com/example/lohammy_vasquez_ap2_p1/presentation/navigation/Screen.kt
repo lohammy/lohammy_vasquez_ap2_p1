@@ -5,7 +5,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed class Screen {
     @Serializable
-    data object Main : Screen()
+    data object AmonestacionList : Screen()
+
     @Serializable
-    data object Second : Screen()
+    data class AmonestacionEdit(val amonestacionId: Int) : Screen()
 }

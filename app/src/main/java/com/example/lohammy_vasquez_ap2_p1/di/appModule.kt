@@ -2,10 +2,10 @@ package com.example.lohammy_vasquez_ap2_p1.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.lohammy_vasquez_ap2_p1.data.local.RegistroDao
-import com.example.lohammy_vasquez_ap2_p1.data.local.RegistroDb
-import com.example.lohammy_vasquez_ap2_p1.data.repository.RegistroRepositoryImpl
-import com.example.lohammy_vasquez_ap2_p1.domain.repository.RegistroRepository
+import com.example.lohammy_vasquez_ap2_p1.data.local.AmonestacionDao
+import com.example.lohammy_vasquez_ap2_p1.data.local.AmonestacionDb
+import com.example.lohammy_vasquez_ap2_p1.data.repository.AmonestacionRepositoryImpl
+import com.example.lohammy_vasquez_ap2_p1.domain.repository.AmonestacionRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,17 +20,17 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): RegistroDb {
+    fun provideDatabase(@ApplicationContext context: Context): AmonestacionDb {
         return Room.databaseBuilder(
             context,
-            RegistroDb::class.java,
-            "Registro.db"
+            AmonestacionDb::class.java,
+            "Amonestacion.db"
         ).build()
     }
 
     @Provides
-    fun provideRegistroDao(db: RegistroDb): RegistroDao {
-        return db.registroDao()
+    fun provideAmonestacionDao(db: AmonestacionDb): AmonestacionDao {
+        return db.amonestacionDao()
     }
 }
 
@@ -40,7 +40,9 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindRegistroRepository(
-        registroRepositoryImpl: RegistroRepositoryImpl
-    ): RegistroRepository
+    abstract fun bindAmonestacionRepository(
+        amonestacionRepositoryImpl: AmonestacionRepositoryImpl
+    ): AmonestacionRepository
 }
+
+
